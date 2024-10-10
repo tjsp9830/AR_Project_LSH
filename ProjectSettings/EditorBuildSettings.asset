@@ -4,7 +4,10 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/LSH Face test.unity
+    guid: 67c396004c8b08243ae9378749dd1092
   m_configObjects:
     UnityEditor.XR.ARCore.ARCoreSettings: {fileID: 11400000, guid: 6fd12554883a5364b9db781f35a8b6de, type: 2}
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: e12abe95b60e8c14c92775090096d1c8, type: 2}
