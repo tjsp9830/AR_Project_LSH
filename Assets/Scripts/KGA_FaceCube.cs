@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR.ARFoundation;
 
-public class KGA_FaceController : MonoBehaviour
+public class KGA_FaceCube : MonoBehaviour
 {
     //페이스 내부 기능 참조
     [SerializeField] ARFaceManager faceManager;     // plane매니저 등등 매니저들은 다 이벤트 형태로 ㄱㄱ
@@ -13,6 +13,7 @@ public class KGA_FaceController : MonoBehaviour
 
     //정점에 표시될 큐브 오브젝트 프리팹과, 큐브들의 리스트
     [SerializeField] GameObject cubePrefab;
+    [SerializeField] Transform cubePrefabCreatePos;
     [SerializeField] List<GameObject> cubes = new List<GameObject>(468);
 
 
@@ -20,7 +21,7 @@ public class KGA_FaceController : MonoBehaviour
     {
         for (int i = 0; i < 468; i++)
         {
-            GameObject cube = Instantiate(cubePrefab);
+            GameObject cube = Instantiate(cubePrefab, cubePrefabCreatePos);
             cubes.Add(cube);
 
         }
