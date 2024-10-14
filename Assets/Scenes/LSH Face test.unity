@@ -785,7 +785,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uD604\uC7AC: 00.\uB9E8\uC5BC\uAD74"
+  m_text: "-1: \uC5D0\uB7EC\uBA54\uC2DC\uC9C0"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 344b5e528fff8bb418074c5a3d14e60c, type: 2}
   m_sharedMaterial: {fileID: 6080808906735952102, guid: 344b5e528fff8bb418074c5a3d14e60c, type: 2}
@@ -1335,6 +1335,41 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ffaadd6c82da35458dea22370d280fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  makeUpList:
+  - makeUpName: "00. \uB2F9\uC2E0\uC758 \uB9E8\uC5BC\uAD74"
+    makeUpImg: {fileID: 2100000, guid: 1bdae317cf68bfb43a8072a7267833a1, type: 2}
+  - makeUpName: "01. \uB2EC\uB2EC \uAD70\uACE0\uAD6C\uB9C8"
+    makeUpImg: {fileID: 2100000, guid: 97ec50cf0b6254049a40a65d357cc92d, type: 2}
+  - makeUpName: "02. \uCCAB\uB208 \uBD09\uC22D\uC544\uBB3C"
+    makeUpImg: {fileID: 2100000, guid: 5726dce6e9c8ca841b4ac0e4dbda2258, type: 2}
+  - makeUpName: "03. \uD638\uD638 \uC544\uC774\uCD94\uC6CC"
+    makeUpImg: {fileID: 2100000, guid: c98eb4f974a31004e97d6c5cbc919746, type: 2}
+  - makeUpName: "04. \uCFE8\uD55C \uBC84\uAC74\uB514\uAC78"
+    makeUpImg: {fileID: 2100000, guid: fec42606e8f9e4c45baac9bc5652dbbd, type: 2}
+  - makeUpName: "05. \uD551\uD06C \uC5B4\uC6E8\uC774\uC988"
+    makeUpImg: {fileID: 2100000, guid: 43ace2e3824f0924f925811c22025880, type: 2}
+  - makeUpName: "06. \uB108\uC758 \uBCF4\uB78F\uBE5B\uBC24"
+    makeUpImg: {fileID: 2100000, guid: 92f5407792454ca40a4914a6ea4d46aa, type: 2}
+  - makeUpName: "07. \uB098\uC758 \uC0C8\uBCBD\uD558\uB298"
+    makeUpImg: {fileID: 2100000, guid: 3a1ed40f279210b4681957d870b9863f, type: 2}
+  - makeUpName: "08. \uB0B4\uAC00 \uC5BC\uC74C\uC5EC\uC655"
+    makeUpImg: {fileID: 2100000, guid: 186cfa142e24bac4a852d84152d52978, type: 2}
+  - makeUpName: "09. \uB098\uB294 \uC5BC\uC74C\uACF5\uC8FC"
+    makeUpImg: {fileID: 2100000, guid: 7e3eee8119be40d4fa77543cd149210f, type: 2}
+  - makeUpName: "10. \uBC18\uC9DD \uC5D0\uBA54\uB784\uB4DC"
+    makeUpImg: {fileID: 2100000, guid: 7d218706280a5e44ca4dfc5d0cf4d337, type: 2}
+  - makeUpName: "11. \uC0B0\uC18D \uD53C\uD1A4\uCE58\uB4DC"
+    makeUpImg: {fileID: 2100000, guid: 83d4893825604f6428c1a11bf17c345c, type: 2}
+  - makeUpName: "12. \uBD04\uB0A0 \uC232\uC758\uC694\uC815"
+    makeUpImg: {fileID: 2100000, guid: 6e48e57823e44704eb3e5faf8fb76da3, type: 2}
+  - makeUpName: "13. \uB178\uB780 \uCF54\uC2A4\uBAA8\uC2A4"
+    makeUpImg: {fileID: 2100000, guid: c67f383632dfcf142a82ffa0cae16623, type: 2}
+  - makeUpName: "14. \uAC00\uC744 \uB099\uC5FD\uD55C\uB2E2"
+    makeUpImg: {fileID: 2100000, guid: 283413f6c8f2c0b4a9cdb65383b4170c, type: 2}
+  - makeUpName: "15. \uB530\uB048 \uAD70\uBC24\uD55C\uD1A8"
+    makeUpImg: {fileID: 2100000, guid: 3d2f94b9ec1d79044a5bd410452b43d3, type: 2}
+  - makeUpName: "16. \uACA8\uC6B8 \uC0DD\uAE30\uBC1C\uB784"
+    makeUpImg: {fileID: 2100000, guid: cd1df52b06c178640b0b146a7916b1f6, type: 2}
   CurStateTMP: {fileID: 792529241}
   faceManager: {fileID: 1746434273}
   curArFace: {fileID: 0}

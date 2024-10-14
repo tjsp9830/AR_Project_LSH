@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 7302739288641089085}
   - component: {fileID: 1199312102017700386}
   - component: {fileID: 449103650058929119}
+  - component: {fileID: -968839141330402024}
   m_Layer: 0
   m_Name: ARface
   m_TagString: Untagged
@@ -125,3 +126,17 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &-968839141330402024
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4001431168787851340}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94b4b9efdfdf12248ad769a57747ea94, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  meshRenderer: {fileID: 449103650058929119}
+  curMat: {fileID: 0}
