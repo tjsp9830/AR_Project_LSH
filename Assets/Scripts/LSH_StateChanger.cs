@@ -7,58 +7,89 @@ using UnityEngine.XR.ARFoundation;
 public class LSH_StateChanger : MonoBehaviour
 {
 
-    enum curState { face00, face01, face02, face03, face04, face05, face06, face07, face08,
-                    face09, face10, face11, face12, face13, face14, face15, face16, Size    };
-    curState currentState;
+    // 메이크업 1~16번의 이름과 메터리얼을 포함한 구조체 
+    [SerializeField] public struct makeUpReference
+    {
+        [SerializeField] string makeUpName;
+        [SerializeField] Material makeUpImg;
+    }
 
+    // 그 구조체를 담을 리스트
+    [SerializeField] public List<makeUpReference> makeUpList;
+
+
+    // 메이크업 번호를 출력할 TextProMesh
     [SerializeField] TextMeshProUGUI CurStateTMP;
 
+    // 메이크업 번호에 맞는 메터리얼 가져올 변수
+    Material[] makeUpFaces = new Material[17];
+    //현재 몇번인지
+    int curIndex;
 
+
+    // 페이스 매니저, 지금 들어가있는 프리팹과 메터리얼 보여줄 변수
     [SerializeField] ARFaceManager faceManager;
     [SerializeField] GameObject curArFace;
+    [SerializeField] Material curArFaceMT;
 
-    GameObject[] makeUpFaces = new GameObject[17];
-    GameObject makeUp_04;
-    GameObject makeUp_05;
-    int curIndex;
+    // AR Face를 받아올 변수
+    ARFace face;  
+
 
 
     private void Awake()
     {
 
-        makeUpFaces[0] = Resources.Load<GameObject>("ARface 0");
-        makeUpFaces[1] = Resources.Load<GameObject>("ARface 1");
-        makeUpFaces[2] = Resources.Load<GameObject>("ARface 2");
-        makeUpFaces[3] = Resources.Load<GameObject>("ARface 3");
-        makeUpFaces[4] = Resources.Load<GameObject>("ARface 4");
-        makeUpFaces[5] = Resources.Load<GameObject>("ARface 5");
-        makeUpFaces[6] = Resources.Load<GameObject>("ARface 6");
-        makeUpFaces[7] = Resources.Load<GameObject>("ARface 7");
-        makeUpFaces[8] = Resources.Load<GameObject>("ARface 8");
-        makeUpFaces[9] = Resources.Load<GameObject>("ARface 9");
-        makeUpFaces[10] = Resources.Load<GameObject>("ARface 10");
-        makeUpFaces[11] = Resources.Load<GameObject>("ARface 11");
-        makeUpFaces[12] = Resources.Load<GameObject>("ARface 12");
-        makeUpFaces[13] = Resources.Load<GameObject>("ARface 13");
-        makeUpFaces[14] = Resources.Load<GameObject>("ARface 14");
-        makeUpFaces[15] = Resources.Load<GameObject>("ARface 15");
-        makeUpFaces[16] = Resources.Load<GameObject>("ARface 16");
-
+        #region 메터리얼 가져오기
+        makeUpFaces[0] = Resources.Load<Material>("ARface 0");
+        makeUpFaces[1] = Resources.Load<Material>("ARface 1");
+        makeUpFaces[2] = Resources.Load<Material>("ARface 2");
+        makeUpFaces[3] = Resources.Load<Material>("ARface 3");
+        makeUpFaces[4] = Resources.Load<Material>("ARface 4");
+        makeUpFaces[5] = Resources.Load<Material>("ARface 5");
+        makeUpFaces[6] = Resources.Load<Material>("ARface 6");
+        makeUpFaces[7] = Resources.Load<Material>("ARface 7");
+        makeUpFaces[8] = Resources.Load<Material>("ARface 8");
+        makeUpFaces[9] = Resources.Load<Material>("ARface 9");
+        makeUpFaces[10] = Resources.Load<Material>("ARface 10");
+        makeUpFaces[11] = Resources.Load<Material>("ARface 11");
+        makeUpFaces[12] = Resources.Load<Material>("ARface 12");
+        makeUpFaces[13] = Resources.Load<Material>("ARface 13");
+        makeUpFaces[14] = Resources.Load<Material>("ARface 14");
+        makeUpFaces[15] = Resources.Load<Material>("ARface 15");
+        makeUpFaces[16] = Resources.Load<Material>("ARface 16");
+        #endregion
 
     }
+
+    private void OnEnable()
+    {
+        faceManager.facesChanged += OnFaceChange;
+    }
+
 
     private void Start()
     {
         curArFace = faceManager.facePrefab;
+        curArFaceMT = curArFace.GetComponent<MeshRenderer>().materials[0];
         curIndex = 4;
         //currentState = curState.face04;
 
     }
 
+    
+
+    private void OnDisable()
+    {
+        faceManager.facesChanged -= OnFaceChange;
+    }
+
     private void Update()
     {
 
-        faceManager.facePrefab = makeUpFaces[curIndex];
+        curArFace = faceManager.facePrefab;
+        curArFaceMT = curArFace.GetComponent<MeshRenderer>().materials[0];
+
 
         switch (curIndex)
         {
@@ -140,8 +171,24 @@ public class LSH_StateChanger : MonoBehaviour
     }
 
 
-    
-    // 밑 함수와 데이터를  리스트로 관리하는  리팩토링 필요
+
+
+    private void OnFaceChange(ARFacesChangedEventArgs args)
+    {
+
+        //처음으로 추가된 애가 하나라도 있다면, arface를 등록
+        if (args.added.Count > 0)
+        {
+            face = args.added[0];
+        }
+
+        //그래도 안되면 ChangeMaterial 밑에 렢라를 넣어보자
+        //하나라도 변경사항이 있었을때
+        if (args.updated.Count > 0)
+        {
+        }
+
+    }
 
     public void ChangePrefabLeft()
     {
@@ -155,8 +202,8 @@ public class LSH_StateChanger : MonoBehaviour
             curIndex--;
         }
 
-        curArFace = makeUpFaces[curIndex];
-
+        //curArFace = makeUpFaces[curIndex];
+        ChangeMaterial(makeUpFaces[curIndex]);
 
     }
 
@@ -172,10 +219,26 @@ public class LSH_StateChanger : MonoBehaviour
             curIndex++;
         }
 
-        curArFace = makeUpFaces[curIndex];
-
+        //curArFace = makeUpFaces[curIndex];
+        ChangeMaterial(makeUpFaces[curIndex]);
 
     }
+
+
+
+    public void ChangeMaterial(Material material)
+    {
+        face.GetComponent<Renderer>().material = material;
+        //버튼 누르기 등으로 메터리얼 계속 교체 가능하게끔 만들어보기
+
+        //faceManager.facePrefab. = 매태리얼이 적용된 프리팹을 넣고싶은데 그걸 어케하지
+        //faceManager.facePrefab.GetComponent<MeshRenderer>().materials[0] = makeUpFaces[curIndex];
+        //curArFace = makeUpFaces[curIndex];
+
+        Debug.LogError("메테리얼 교체");
+
+    }
+
 
 
 }
